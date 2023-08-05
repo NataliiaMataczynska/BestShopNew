@@ -1,0 +1,35 @@
+@import "scss/settings/variables";
+@import "scss/settings/mixins";
+@import "scss/elements/base";
+@import "scss/generic/reset";
+
+.btn {
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  padding: 16px 65px;
+  border-radius: $button-radius;
+  border: none;
+}
+
+.btn--primary {
+  background-color: $color-primary;
+  border-radius: $button-radius;
+  box-shadow: 3px 10px 14px $color-primary-shadow;
+}
+
+.btn--redish {
+  background-color: $color-redish;
+}
+
+.btn--green {
+  background-color: $color-green;
+}
+
+.btn--large {
+  padding: 22px 155px;
+  @include mobileWidth {
+    padding: 22px 92px;
+    margin: 30px;
+  }
+}

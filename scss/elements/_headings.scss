@@ -1,0 +1,132 @@
+@import "scss/settings/variables";
+@import "scss/settings/mixins";
+.header {
+  height: 70px;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+
+  @include mobileWidth {
+    nav {
+      margin-top: 25px;
+      height: 150%;
+      width: 120%;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    @include mobileWidth {
+      justify-content: flex-start;
+      flex-direction: column;
+
+    }
+
+    & {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      @include mobileWidth {
+        align-items: flex-start;
+      }
+    }
+
+    .header__nav {
+      display: flex;
+      @include mobileWidth {
+        @include navIs;
+        /*display: none;
+        &:has(input:checked)::before, &:has(input:checked)::after {
+          display: flex;
+          @include navIs;
+        }*/
+      }
+
+      .nav__element {
+        padding: 0 26px;
+      }
+      .nav__element:last-child {
+        padding-right: 0;
+      }
+
+      .nav__link {
+        color: $color-grey;
+        font-weight: 700;
+        font-size: 0.6875rem;
+        text-transform: uppercase;
+        padding: 28px 18px 22px;
+        border-bottom: 4px solid transparent;
+        letter-spacing: 0.1875rem;
+        @include mobileWidth {
+          padding: 28px 0 22px;
+        }
+      }
+
+      .nav__link:hover {
+        color: $color-black;
+        border-color: $color-primary;
+        @include mobileWidth {
+          border-color: transparent;
+        }
+      }
+
+    }
+  }
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background-color: $color-primary;
+  border-radius: 9999px;
+  transform-origin: left center;
+  transition: opacity 50ms ease-in-out, width 50ms ease-in-out,
+    rotate 50ms ease-in-out, translate 50ms ease-in-out,
+    background-color 50ms ease-in-out;
+}
+
+.hamburger-menu {
+  display: none;
+  @media (max-width: 1000px) {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: max-content;
+  position: absolute;
+  top: 29px;
+  right: 30px;
+  z-index: 2;
+  cursor: pointer;
+
+    &:has(input:checked)::before {
+      rotate: 45deg;
+      width: calc(calc(2px * 3 + 2px * 2)) * 1.41421356237;
+      translate: 0 calc(2px / -2);
+    }
+
+    &:has(input:checked)::after {
+      rotate: -45deg;
+      width: calc(calc(2px * 3 + 2px * 2)) * 1.41421356237;
+      translate: 0 calc(2px / 2);
+    }
+
+    & input:checked {
+      opacity: 0;
+      width: 0;
+    }
+
+    & input {
+      appearance: none;
+      padding: 0;
+      margin: 0;
+      outline: none;
+      pointer-events: none;
+    }
+  }
+}
+

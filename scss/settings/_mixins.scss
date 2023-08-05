@@ -1,0 +1,68 @@
+@import "scss/settings/variables";
+
+@mixin mobileWidth {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 1352px) {
+    @content;
+  }
+}
+@mixin mobilBtn ($button-radius) {
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  padding: 16px 65px;
+  border-radius: $button-radius;
+  border: none;
+  @content;
+}
+
+@mixin hamburgerChecked {
+
+  &:has(input:checked)::before {
+    rotate: 45deg;
+    width: calc(calc(2px * 3 + 2px * 2)) * 1.41421356237;
+    translate: 0 calc(2px / -2);
+  }
+
+  &:has(input:checked)::after {
+    rotate: -45deg;
+    width: calc(calc(2px * 3 + 2px * 2)) * 1.41421356237;
+    translate: 0 calc(2px / 2);
+  }
+
+  & input:checked {
+    opacity: 0;
+    width: 0;
+  }
+  @content;
+}
+
+@mixin checked {
+  input:checked {
+    @include hamburgerChecked;
+    @include navIs;
+  }
+  @content;
+}
+
+@mixin navIs {
+  flex-direction: column;
+  line-height: 25px;
+  background-color: $color-white;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  position: relative;
+  left: -20px;
+  padding-left: 10px;
+  .nav__element:first-child {
+    margin-top: 20px;
+  }
+  .nav__element:last-child {
+    margin-bottom: 20px;
+  }
+  @content;
+}

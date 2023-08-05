@@ -1,0 +1,56 @@
+@import "generic/reset";
+@import "generic/grid";
+@import "elements/headings";
+@import "elements/navigation";
+@import "elements/statystics";
+@import "elements/benefits";
+@import "elements/base";
+@import "elements/pricing";
+@import "elements/contact";
+@import "elements/footer";
+@import "elements/buttons";
+@import "elements/opening";
+@import "settings/mixins";
+@import "settings/variables";
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-open-sans;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-family: $font-raleway;
+  font-size: 2.25rem;
+  @include mobileWidth {
+    font-size: 2rem;
+  }
+}
+
+.container {
+  width: 1352px;
+  margin: 0 auto;
+
+  @include mobile {
+    width: 100vw;
+    padding: 0 15px;
+  }
+}
+
+.logo {
+  font-family: $font-raleway;
+  font-size: 2rem;
+  font-weight: 300;
+  color: $color-primary;
+  @include mobileWidth {
+    padding-left: 10px;
+    padding-top: 18px;
+  }
+}
